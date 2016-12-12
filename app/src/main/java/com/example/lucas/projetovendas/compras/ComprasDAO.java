@@ -29,7 +29,7 @@ public class ComprasDAO {
         values.put(Compras.PRODUTO, compra.getProduto());
         values.put(Compras.PRECO, compra.getPreco());
         values.put(Compras.QUANTIDADE, compra.getQuantidade());
-        values.put(Compras.NOMEMERCADO, compra.getNome_mercado());
+        values.put(Compras.FOTO, compra.getFoto());
         values.put(Compras.VALORGASTO, compra.getValor_gasto());
         db.insert(Compras.TABELA, null, values);
     }
@@ -39,7 +39,7 @@ public class ComprasDAO {
         values.put(Compras.PRODUTO, compra.getProduto());
         values.put(Compras.PRECO, compra.getPreco());
         values.put(Compras.QUANTIDADE, compra.getQuantidade());
-        values.put(Compras.NOMEMERCADO, compra.getNome_mercado());
+        values.put(Compras.FOTO, compra.getFoto());
         values.put(Compras.VALORGASTO, compra.getValor_gasto());
 
         String id = String.valueOf(compra.getId());
@@ -63,7 +63,7 @@ public class ComprasDAO {
         compras.setProduto(c.getString(c.getColumnIndex(Compras.PRODUTO)));
         compras.setPreco(c.getDouble(c.getColumnIndex(Compras.PRECO)));
         compras.setQuantidade(c.getInt(c.getColumnIndex(Compras.QUANTIDADE)));
-        compras.setNome_mercado(c.getString(c.getColumnIndex(Compras.NOMEMERCADO)));
+        compras.setFoto(c.getString(c.getColumnIndex(Compras.FOTO)));
         compras.setValor_gasto(c.getDouble(c.getColumnIndex(Compras.VALORGASTO)));
 
 
@@ -83,7 +83,7 @@ public class ComprasDAO {
                 compra.setProduto(c.getString(c.getColumnIndex(Compras.PRODUTO)));
                 compra.setPreco(c.getDouble(c.getColumnIndex(Compras.PRECO)));
                 compra.setQuantidade(c.getInt(c.getColumnIndex(Compras.QUANTIDADE)));
-                compra.setNome_mercado(c.getString(c.getColumnIndex(Compras.NOMEMERCADO)));
+                compra.setFoto(c.getString(c.getColumnIndex(Compras.FOTO)));
                 compra.setValor_gasto(c.getDouble(c.getColumnIndex(Compras.VALORGASTO)));
 
                 comprasList.add(compra);

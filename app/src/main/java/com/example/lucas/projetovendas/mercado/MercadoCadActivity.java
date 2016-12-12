@@ -1,4 +1,4 @@
-package com.example.lucas.projetovendas.compras;
+package com.example.lucas.projetovendas.mercado;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,50 +13,43 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.lucas.projetovendas.R;
-import com.example.lucas.projetovendas.mercado.Mercado;
-import com.example.lucas.projetovendas.services.gps.GpsService;
 
 import java.io.ByteArrayOutputStream;
 
-public class ComprasCadActivity extends AppCompatActivity {
+public class MercadoCadActivity extends AppCompatActivity {
 
-    private EditText edtProduto, edtPreco, edtQuantidade;
-    private ComprasDAO compraDAO;
-    private String srtFoto;
+    private EditText edtNome, edtTelefone;
     private ImageView imFoto;
+    private MercadoDAO mercadoDAO;
+    private String srtFoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_compras_cad);
-
-//        Intent intent = getIntent();
-//        Bundle bundle = intent.getExtras();
-//        String txt = bundle.getString("txt");
+        setContentView(R.layout.activity_mercado_cad);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        edtProduto = (EditText) findViewById(R.id.compra_cad_edtProduto);
-        edtPreco = (EditText) findViewById(R.id.compra_cad_edtPreco);
-        edtQuantidade = (EditText) findViewById(R.id.compra_cad_edtQuantidade);
 
-        imFoto = (ImageView) findViewById(R.id.compra_cad_foto_preco);
+        edtNome = (EditText) findViewById(R.id.mercado_cad_edtNome);
+        edtTelefone = (EditText) findViewById(R.id.mercado_cad_edtTelefone);
+
+        imFoto = (ImageView) findViewById(R.id.mercado_cad_foto_mercado);
 
         //instancia do ComprasDAO
-        compraDAO = new ComprasDAO(this);
+        mercadoDAO = new MercadoDAO(this);
     }
 
-    //todo evento criado para botao em tela espera uma view
-    public void salvarCompra(View v){
-        Compras c = new Compras();
-        c.setProduto(edtProduto.getText().toString());
-        c.setPreco(Double.valueOf(edtPreco.getText().toString()));
-        c.setQuantidade(Integer.valueOf(edtQuantidade.getText().toString()));
-        c.setFoto(srtFoto);
+    public void salvarMercado(View v){
+        Mercado m = new Mercado();
+        m.setNome_mercado(edtNome.getText().toString());
+        m.setTelefone(edtTelefone.getText().toString());
 
-        compraDAO.salvar(c);
+        m.setFoto(srtFoto);
 
-        Log.i("Compra","Salva com sucesso");
+        mercadoDAO.salvar(m);
+
+        Log.i("Mercado","Salvo com sucesso");
         finish();
     }
 
@@ -97,8 +90,4 @@ public class ComprasCadActivity extends AppCompatActivity {
         }
         return true;
     }
-
-    //metodo que revisa se já existe uma lista selecionada
-    //public checarLocal(){}
-
 }

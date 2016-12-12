@@ -1,0 +1,40 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.lucas.projetovendas.sobre.SobreFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:fitsSystemWindows="true"
+        android:paddingTop="100dp"
+        android:src="@drawable/world_wide_web"
+        android:layout_gravity="top"/>
+
+    <TextView
+        android:id="@+id/text_sobre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:paddingTop="140dp"
+        android:text="@string/text_sobre"
+        android:textAlignment="center" />
+    <TextView
+        android:id="@+id/text_sobre1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:paddingTop="200dp"
+        android:text="@string/text_sobre2"
+        android:textAlignment="center"/>
+    <TextView
+        android:id="@+id/text_sobre2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:paddingTop="230dp"
+        android:text="@string/text_sobre3"
+        android:textAlignment="center" />
+
+</FrameLayout>

@@ -1,26 +1,23 @@
 package com.example.lucas.projetovendas.compras;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.lucas.projetovendas.Lista.ListaComprasListFragment;
 import com.example.lucas.projetovendas.R;
 
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ComprasListFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ComprasListFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class ComprasListFragment extends Fragment {
 
+public class ComprasListFragment extends Fragment implements AdapterView.OnItemClickListener{
+
+    List<Compras> compras;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +44,19 @@ public class ComprasListFragment extends Fragment {
 
         return view;
 
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view,
+                            int position, long id) {
+
+        Compras compra = compras.get(position);
+
+        Intent it = new Intent(getActivity(),ListaComprasListFragment.class);
+        String id1 = String.valueOf(compra.getId());
+        it.putExtra(Compras.ID,id1);
+        startActivityForResult(it,1);
+        //Toast.makeText(getActivity(),denuncia.getDescricao(),Toast.LENGTH_LONG).show();
     }
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_compras_cad"
+    android:id="@+id/activity_mercado_cad"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,17 +9,17 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.lucas.projetovendas.compras.ComprasCadActivity">
+    tools:context="com.example.lucas.projetovendas.mercado.MercadoCadActivity">
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/compra_cad_edtProduto"
+            android:id="@+id/mercado_cad_edtNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/text_produto" />
+            android:hint="@string/text_cad_mercado_nome" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -27,54 +27,55 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/compra_cad_edtPreco"
+            android:id="@+id/mercado_cad_edtTelefone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/text_preco"
+            android:hint="@string/text_cad_mercado_telefone"
             android:inputType="numberDecimal" />
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/compra_cad_edtQuantidade"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="@string/text_quantidade"
-            android:inputType="number" />
-
-
-    </android.support.design.widget.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/compra_cad_foto_preco"
+            android:id="@+id/mercado_cad_foto_mercado"
             android:layout_width="250dp"
             android:layout_height="100dp"
-            android:src="@drawable/price" />
+            android:src="@drawable/shopping_cart" />
 
         <ImageButton
-            android:id="@+id/compra_cad_btnFoto"
+            android:id="@+id/mercado_cad_btnFoto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:background="@android:color/transparent"
-            android:src="@drawable/photo36dp"
-            android:onClick="capturarFoto"/>
-
+            android:onClick="capturarFotoMercado"
+            android:src="@drawable/photo36dp" />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/compra_cad_btnEnviar"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="salvarCompra"
+        android:paddingTop="15dp"
+        android:text="@string/text_cad_localizacao"
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <include layout="@layout/fragment_mapa" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/mercado_cad_btnEnviar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="salvarMercado"
         android:text="@string/button_salvar" />
 
 

@@ -4,19 +4,20 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
- * Created by lucas on 28/11/16.
+ * Created by lucas on 08/12/16.
  */
-public class BancoDados {
 
-    private static final String NOME_BANCO = "comprasMercado";
-    private static final int VERSAO_BANCO = 5;
+public class BancoDadosMercados {
 
-    //Script
-    private static final String[] SCRIPT_DATABASE_DELETE = new String[]{"DROP TABLE IF EXISTS comprasMercado;"};
 
-    //Tabela com id sequencial usa-se _id
+    private static final String NOME_BANCO = "nomeMercado";
+    private static final int VERSAO_BANCO = 1;
+
+    private static final String[] SCRIPT_DATABASE_DELETE = new String[]{"DROP TABLE IF EXISTS nomeMercado;"};
+
+
     private static final String[] SCRIPT_DATABASE_CREATE = new String[]{
-            "create table comprasMercado(_id integer primary key, cp_produto text, cp_preco double, cp_quantidade int, cp_foto text, cp_valor_gasto double);"};
+            "create table nomeMercado(_id integer primary key, m_mercado text, m_telefone text, m_latitude text, m_longitude text, m_foto text)"};
 
     private static SQLiteDatabase db;
 

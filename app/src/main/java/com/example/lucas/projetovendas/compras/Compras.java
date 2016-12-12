@@ -11,18 +11,18 @@ public class Compras {
     private String produto;
     private Double preco;
     private Integer quantidade;
-    private String nome_mercado;
+    private String foto;
     private Double valor_gasto;
 
     public static final String ID = "_id";
     public static final String PRODUTO = "cp_produto";
     public static final String PRECO = "cp_preco";
     public static final String QUANTIDADE = "cp_quantidade";
-    public static final String NOMEMERCADO = "cp_nome_mercado";
+    public static final String FOTO = "cp_foto";
     public static final String VALORGASTO = "cp_valor_gasto";
 
     public static final String TABELA = "comprasMercado";
-    public static final String[] COLUNAS = {ID, PRODUTO, PRECO, QUANTIDADE, NOMEMERCADO, VALORGASTO};
+    public static final String[] COLUNAS = {ID, PRODUTO, PRECO, QUANTIDADE, FOTO, VALORGASTO};
 
     public Long getId() {
         return id;
@@ -56,12 +56,12 @@ public class Compras {
         this.quantidade = quantidade;
     }
 
-    public String getNome_mercado() {
-        return nome_mercado;
+    public String getFoto() {
+        return foto;
     }
 
-    public void setNome_mercado(String nome_mercado) {
-        this.nome_mercado = nome_mercado;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public Double getValor_gasto() {
