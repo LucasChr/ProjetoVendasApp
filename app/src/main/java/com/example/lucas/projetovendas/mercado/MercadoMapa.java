@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lucas.projetovendas.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -18,6 +19,8 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.List;
 
 public class MercadoMapa extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -47,6 +50,10 @@ public class MercadoMapa extends AppCompatActivity implements OnMapReadyCallback
         if (it != null) {
             mercado = new Mercado();
             mercado = mercadoDAO.buscarNome(srtBusca);
+            if (mercado.getId() == null) {
+                Toast.makeText(this, "Mercado não encontrado", Toast.LENGTH_LONG).show();
+                finish();
+            }
         }
 
         tvMercado = (TextView) findViewById(R.id.activity_mercado_mapa_tvMercado);

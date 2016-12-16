@@ -10,9 +10,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.lucas.projetovendas.R;
 import com.example.lucas.projetovendas.mercado.Mercado;
+import com.example.lucas.projetovendas.mercado.MercadoCadActivity;
 import com.example.lucas.projetovendas.mercado.MercadoDAO;
 
 import java.text.DateFormat;
@@ -31,6 +33,7 @@ public class ListaCadActivity extends AppCompatActivity {
     private Mercado mercado;
     private String nome;
     private List<String> nomes = new ArrayList<String>();
+    private List<Mercado> mercadoList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +48,16 @@ public class ListaCadActivity extends AppCompatActivity {
 
         mercadoDAO = new MercadoDAO(this);
         //Adicionando Nomes no ArrayList
-        List<Mercado> mercadoList = mercadoDAO.listar();
-        mercadoList.iterator().next();
 
+        mercadoList = mercadoDAO.listar();
+        if (mercadoList.isEmpty()) {
+            Toast.makeText(this, "Você precisa adicionar um mercado primeiro", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, MercadoCadActivity.class);
+            startActivity(intent);
+        } else {
+
+            mercadoList.iterator().next();
+        }
 
         //usado para preeencher o spinner
         for (Iterator iterator = mercadoList.iterator(); iterator.hasNext(); ) {
@@ -90,15 +100,26 @@ public class ListaCadActivity extends AppCompatActivity {
 
     public void salvarLista(View v) {
         Lista l = new Lista();
-        l.setNome(edtNome.getText().toString());
-        l.setData(edtData.getText().toString());
+        if (edtNome.getText().toString().length() < 1 || edtNome.equals("")) {
+            edtNome.setError("Você precisa colocar um nome para sua lista");
+        } else {
+            l.setNome(edtNome.getText().toString());
+        }
+        if (edtData.getText().toString().length() < 1 || edtData.equals("")) {
+            edtData.setError("Você precisa adicionar uma data para sua lista");
+        } else {
+            l.setData(edtData.getText().toString());
+        }
+
         l.setMercado(spnMercados.getSelectedItem().toString());
         l.setTotal(0.0);
 
-        listaDAO.salvar(l);
+        if (l.getNome() != null && l.getData() != null) {
+            listaDAO.salvar(l);
+            Log.i("Lista", "Salva com sucesso");
+            finish();
+        }
 
-        Log.i("Lista", "Salva com sucesso");
-        finish();
     }
 
 

@@ -129,13 +129,16 @@ public class ComprasListActivity extends AppCompatActivity implements AdapterVie
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        atualizaLista();
+
         if (resultCode == 1) {
             Toast.makeText(this, "Salvo com sucesso", Toast.LENGTH_LONG).show();
+            atualizaLista();
         } else if (resultCode == 2) {
             Toast.makeText(this, "Modificado com sucesso", Toast.LENGTH_LONG).show();
+            atualizaLista();
         } else if (resultCode == 3) {
             Toast.makeText(this, "Excluído com sucesso", Toast.LENGTH_LONG).show();
+            atualizaLista();
         }
     }
 

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.lucas.projetovendas.R;
 import com.example.lucas.projetovendas.services.gps.GpsService;
@@ -55,16 +56,37 @@ public class MercadoCadActivity extends AppCompatActivity implements OnMapReadyC
 
     public void salvarMercado(View v) {
         Mercado m = new Mercado();
-        m.setNome_mercado(edtNome.getText().toString());
-        m.setTelefone(edtTelefone.getText().toString());
+        if (edtNome.getText().toString().length() < 1 || edtNome.equals("")) {
+            edtNome.setError("Você precisa colocar um nome para o mercado");
+        } else {
+            m.setNome_mercado(edtNome.getText().toString());
+        }
+        if (edtTelefone.getText().toString().length() < 1 || edtTelefone.equals("")) {
+            edtTelefone.setError("Você precisa colocar um telefone");
+        } else {
+            m.setTelefone(edtTelefone.getText().toString());
+        }
         m.setLatitude(String.valueOf(gps.getLatitude()));
         m.setLongitude(String.valueOf(gps.getLongitude()));
-        m.setFoto(srtFoto);
 
-        mercadoDAO.salvar(m);
+        if (srtFoto == null)
 
-        Log.i("Mercado", "Salvo com sucesso");
-        finish();
+        {
+            Toast.makeText(this, "Você deve adicionar uma foto", Toast.LENGTH_LONG).show();
+        } else
+
+        {
+            m.setFoto(srtFoto);
+        }
+
+        if (m.getNome_mercado() != null && m.getTelefone() != null)
+
+        {
+            mercadoDAO.salvar(m);
+            Log.i("Mercado", "Salvo com sucesso");
+            finish();
+        }
+
     }
 
     public void capturarFotoMercado(View v) {

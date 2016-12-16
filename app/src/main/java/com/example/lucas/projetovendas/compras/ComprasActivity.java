@@ -39,7 +39,7 @@ public class ComprasActivity extends AppCompatActivity {
         tvProduto = (TextView) findViewById(R.id.activity_compras_tvProduto);
         tvPreco = (TextView) findViewById(R.id.activity_compras_tvPreco);
         tvQuantidade = (TextView) findViewById(R.id.activity_compras_tvQuantidade);
-        tvTotal = (TextView) findViewById(R.id.activity_compras_tvTotal);
+        //tvTotal = (TextView) findViewById(R.id.activity_compras_tvTotal);
         imgCompra = (ImageView) findViewById(R.id.activity_compras_imgCompra);
 
         byte[] bytearray = Base64.decode(compra.getFoto(), Base64.DEFAULT);

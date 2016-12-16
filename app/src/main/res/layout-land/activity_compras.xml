@@ -95,20 +95,21 @@
             android:orientation="horizontal"
             android:paddingTop="20dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/valor_gasto"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+            <!--  <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/valor_gasto"
+                  android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
-            <TextView
-                android:id="@+id/activity_compras_tvTotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/valor_gasto"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+              <TextView
+                  android:id="@+id/activity_compras_tvTotal"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/valor_gasto"
+                  android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+          </LinearLayout>
+              -->
         </LinearLayout>
 
     </LinearLayout>
-
 </LinearLayout>

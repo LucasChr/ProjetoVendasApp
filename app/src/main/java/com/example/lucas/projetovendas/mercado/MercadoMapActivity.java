@@ -69,17 +69,22 @@ public class MercadoMapActivity extends AppCompatActivity implements OnMapReadyC
     }
 
     public void buscarMercado(View v) {
-        Intent intent = new Intent(this, MercadoMapa.class);
-        String txt = edtBusca.getText().toString();
-        Bundle bundle = new Bundle();
-        bundle.putString("txt", txt);
-        intent.putExtras(bundle);
-        startActivityForResult(intent, 1);
+        String txt;
+        if (edtBusca.getText().toString().length() < 1 || edtBusca.equals("")) {
+            edtBusca.setError("Digite um nome de mercado para buscar");
+        } else {
+            Intent intent = new Intent(this, MercadoMapa.class);
+            txt = edtBusca.getText().toString();
+            Bundle bundle = new Bundle();
+            bundle.putString("txt", txt);
+            intent.putExtras(bundle);
+            startActivityForResult(intent, 1);
+        }
+
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //return super.onOptionsItemSelected(item);
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
