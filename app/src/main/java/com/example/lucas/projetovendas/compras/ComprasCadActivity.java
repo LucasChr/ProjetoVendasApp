@@ -3,6 +3,7 @@ package com.example.lucas.projetovendas.compras;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -11,8 +12,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.lucas.projetovendas.R;
+import com.example.lucas.projetovendas.lista.Lista;
 import com.example.lucas.projetovendas.mercado.Mercado;
 import com.example.lucas.projetovendas.services.gps.GpsService;
 
@@ -24,16 +27,17 @@ public class ComprasCadActivity extends AppCompatActivity {
     private ComprasDAO compraDAO;
     private String srtFoto;
     private ImageView imFoto;
+    private String srtLista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compras_cad);
 
-//        Intent intent = getIntent();
-//        Bundle bundle = intent.getExtras();
-//        String txt = bundle.getString("txt");
-
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        String txt = bundle.getString("txt");
+        srtLista = txt;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         edtProduto = (EditText) findViewById(R.id.compra_cad_edtProduto);
@@ -47,16 +51,18 @@ public class ComprasCadActivity extends AppCompatActivity {
     }
 
     //todo evento criado para botao em tela espera uma view
-    public void salvarCompra(View v){
+    public void salvarCompra(View v) {
+
         Compras c = new Compras();
         c.setProduto(edtProduto.getText().toString());
         c.setPreco(Double.valueOf(edtPreco.getText().toString()));
-        c.setQuantidade(Integer.valueOf(edtQuantidade.getText().toString()));
+        c.setQuantidade(Double.valueOf(edtQuantidade.getText().toString()));
         c.setFoto(srtFoto);
-
+        c.setLista(srtLista);
+        c.setTotal(0.0);
         compraDAO.salvar(c);
 
-        Log.i("Compra","Salva com sucesso");
+        Log.i("Compra", "Salva com sucesso");
         finish();
     }
 
@@ -90,7 +96,7 @@ public class ComprasCadActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         //return super.onOptionsItemSelected(item);
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;
@@ -98,7 +104,21 @@ public class ComprasCadActivity extends AppCompatActivity {
         return true;
     }
 
-    //metodo que revisa se já existe uma lista selecionada
-    //public checarLocal(){}
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("Produto", edtProduto.getText().toString());
+        outState.putString("Preco", edtPreco.getText().toString());
+        outState.putString("Quantidade", edtQuantidade.getText().toString());
+        Log.i("bundle", "save");
+    }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle bundle) {
+        super.onRestoreInstanceState(bundle);
+        edtProduto.setText(bundle.getString("Produto"));
+        edtPreco.setText(bundle.getString("Preco"));
+        edtQuantidade.setText(bundle.getString("Quantidade"));
+        Log.i("bundle", "restore");
+    }
 }

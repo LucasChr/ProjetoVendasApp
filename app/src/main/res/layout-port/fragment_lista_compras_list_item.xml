@@ -14,32 +14,46 @@
         android:elevation="10dp"
         app:cardCornerRadius="5dp">
 
+        <LinearLayout
+            android:layout_width="@dimen/width_imgLista"
+            android:layout_height="@dimen/height_imgLista">
 
-        <ImageView
-            android:id="@+id/fragment_lista_list_item_imgLista"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:paddingLeft="4dp"
-            android:src="@drawable/comida" />
+            <ImageView
+                android:id="@+id/fragment_lista_list_item_imgLista"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/comida" />
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="60dp">
+            android:paddingLeft="@dimen/paddingLeft_itensLista">
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/fragment_lista_list_item_tvLista"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/text_view_lista_nome" />
 
+
+
+                    <TextView
+                        android:id="@+id/fragment_lista_list_item_tvData"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="end"
+                        android:paddingRight="5dp"
+                        android:text="@string/text_lista_data" />
             </LinearLayout>
 
             <LinearLayout

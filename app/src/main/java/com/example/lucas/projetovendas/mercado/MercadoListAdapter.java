@@ -1,10 +1,14 @@
 package com.example.lucas.projetovendas.mercado;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lucas.projetovendas.R;
@@ -18,9 +22,9 @@ import java.util.List;
 public class MercadoListAdapter extends ArrayAdapter<Mercado> {
 
 
-    int layout;
-    Context context;
-    List<Mercado> mercadoList;
+    private int layout;
+    private Context context;
+    private List<Mercado> mercadoList;
 
     public MercadoListAdapter(Context context, int layout, List<Mercado> mercadosList) {
         super(context, layout, mercadosList);
@@ -36,12 +40,18 @@ public class MercadoListAdapter extends ArrayAdapter<Mercado> {
 
         TextView tvNomeMercado = (TextView) itemView.findViewById(R.id.fragment_mercado_list_item_tvNomeMercado);
         TextView tvTelefone = (TextView) itemView.findViewById(R.id.fragment_mercado_list_item_tvTelefone);
-        TextView tvLatitude = (TextView) itemView.findViewById(R.id.fragment_mercado_list_item_tvLatitude);
+        ImageView imgMercado = (ImageView) itemView.findViewById(R.id.fragment_mercado_list_item_imgMercado);
 
         final Mercado mercado = mercadoList.get(position);
         tvNomeMercado.setText(mercado.getNome_mercado());
         tvTelefone.setText(mercado.getTelefone());
-        tvLatitude.setText(mercado.getLatitude());
+
+
+        if (mercado.getFoto() != null) {
+            byte[] bytearray = Base64.decode(mercado.getFoto(), Base64.DEFAULT);
+            Bitmap bmimage = BitmapFactory.decodeByteArray(bytearray, 0, bytearray.length);
+            imgMercado.setImageBitmap(bmimage);
+        }
 
         return itemView;
     }

@@ -1,4 +1,4 @@
-package com.example.lucas.projetovendas.mercado;
+package com.example.lucas.projetovendas.lista;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,17 +11,17 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.lucas.projetovendas.R;
-
+import com.example.lucas.projetovendas.compras.ComprasListActivity;
 
 import java.util.List;
 
-public class MercadoListFragment extends Fragment implements AdapterView.OnItemClickListener{
 
-    private List<Mercado> mercados;
-    private MercadoDAO mercadoDAO;
-    private MercadoListAdapter adapter;
+public class ListaComprasListFragment extends Fragment implements AdapterView.OnItemClickListener {
 
-    @Override
+    private List<Lista> listas;
+    private ListaListAdapter adapter;
+    private ListaDAO listasDAO;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
@@ -30,34 +30,39 @@ public class MercadoListFragment extends Fragment implements AdapterView.OnItemC
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_mercado_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_lista_compras_list, container, false);
 
-        ListView listView = (ListView) view.findViewById(R.id.fragment_mercado_list_listview);
+        ListView listView = (ListView) view.findViewById(R.id.fragment_lista_list_listview);
         listView.setEmptyView(view.findViewById(android.R.id.empty));
         listView.setOnItemClickListener(this);
         //listView.setEmptyView();
 
-        mercadoDAO = new MercadoDAO(getActivity());
-        mercados = mercadoDAO.listar();
+        listasDAO = new ListaDAO(getActivity());
+        List<Lista> listasList = listasDAO.listar();
 
-        adapter = new MercadoListAdapter(getActivity(),
-                R.layout.fragment_mercado_list_item, mercados);
+        adapter = new ListaListAdapter(getActivity(),
+                R.layout.fragment_lista_compras_list_item, listasList);
 
         listView.setAdapter(adapter);
+
+        ListaDAO listaDAO = new ListaDAO(getActivity());
+        listas = listasDAO.listar();
 
         return view;
 
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-        Mercado mercado = mercados.get(position);
 
-        Intent it = new Intent(getActivity(), MercadoActivity.class);
-        String id1 = String.valueOf(mercado.getId());
-        it.putExtra(Mercado.ID, id1);
-        startActivityForResult(it,1);
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Lista lista1 = listas.get(position);
+
+        Intent it = new Intent(getActivity(), ComprasListActivity.class);
+        String id1 = String.valueOf(lista1.getId());
+        it.putExtra(Lista.ID, id1);
+        startActivityForResult(it, 1);
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -73,10 +78,9 @@ public class MercadoListFragment extends Fragment implements AdapterView.OnItemC
     }
 
     public void atualizaLista() {
-        List<Mercado> tu = mercadoDAO.listar();
+        List<Lista> tu = listasDAO.listar();
         adapter.clear();
         adapter.addAll(tu);
         adapter.notifyDataSetChanged();
     }
-
 }

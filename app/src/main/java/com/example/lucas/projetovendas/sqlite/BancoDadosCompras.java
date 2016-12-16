@@ -6,17 +6,17 @@ import android.database.sqlite.SQLiteDatabase;
 /**
  * Created by lucas on 28/11/16.
  */
-public class BancoDados {
+public class BancoDadosCompras {
 
     private static final String NOME_BANCO = "comprasMercado";
-    private static final int VERSAO_BANCO = 5;
+    private static final int VERSAO_BANCO = 8;
 
     //Script
     private static final String[] SCRIPT_DATABASE_DELETE = new String[]{"DROP TABLE IF EXISTS comprasMercado;"};
 
     //Tabela com id sequencial usa-se _id
     private static final String[] SCRIPT_DATABASE_CREATE = new String[]{
-            "create table comprasMercado(_id integer primary key, cp_produto text, cp_preco double, cp_quantidade int, cp_foto text, cp_valor_gasto double);"};
+            "create table comprasMercado(_id integer primary key, cp_produto text, cp_preco double, cp_quantidade double, cp_foto text, cp_lista text, cp_total double);"};
 
     private static SQLiteDatabase db;
 

@@ -28,5 +28,14 @@
     <string name="text_cad_mercado_nome">Nome do mercado</string>
     <string name="text_cad_mercado_telefone">Telefone</string>
     <string name="text_cad_localizacao">Localização</string>
+    <string name="text_nome_lista">Dê um nome para sua lista</string>
+    <string name="text_mercado_lista">Escolha um dos mercados</string>
+    <string name="text_lista_data">Data</string>
+    <string name="action_nova_compra">Adicionar produto</string>
+    <string name="valor_gasto">Total:</string>
+    <string name="action_editar">Editar</string>
+    <string name="action_excluir">Excluir</string>
+    <string name="action_editar_lista">Editar lista</string>
+    <string name="action_excluir_lista">Excluir lista</string>
 
 </resources>

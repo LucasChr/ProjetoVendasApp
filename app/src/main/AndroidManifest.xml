@@ -40,7 +40,12 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".mercado.MercadoCadActivity"></activity>
+        <activity android:name=".mercado.MercadoCadActivity" />
+        <activity android:name=".mercado.MercadoActivity" />
+        <activity android:name=".mercado.MercadoMapActivity" />
+        <activity android:name=".lista.ListaCadActivity" />
+        <activity android:name=".compras.ComprasActivity" />
+        <activity android:name=".compras.ComprasListActivity" />
     </application>
 
 </manifest>

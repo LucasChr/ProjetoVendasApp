@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.lucas.projetovendas.R;
-import com.example.lucas.projetovendas.sqlite.BancoDados;
+import com.example.lucas.projetovendas.sqlite.BancoDadosCompras;
 
 /**
  * Created by lucas on 02/12/16.
@@ -15,7 +15,7 @@ import com.example.lucas.projetovendas.sqlite.BancoDados;
 
 public class SplashActivity extends AppCompatActivity {
 
-    SQLiteDatabase db;
+     SQLiteDatabase db;
 
 
     @Override
@@ -24,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         //Sempre importar o R do meu projeto
         setContentView(R.layout.activity_splash);
 
-        db = BancoDados.getDB(this);
+        db = BancoDadosCompras.getDB(this);
 
         new Handler().postDelayed(new Runnable() {
             @Override

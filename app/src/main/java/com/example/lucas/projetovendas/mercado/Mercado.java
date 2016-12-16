@@ -20,13 +20,7 @@ public class Mercado {
     public static final String LONGITUDE = "m_longitude";
     public static final String FOTO = "m_foto";
 
-    public String getFoto() {
-        return foto;
-    }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
 
     public static final String TABELA = "nomeMercado";
     public static final String[] COLUNAS = {ID, NOMEMERCADO, TELEFONE, LATITUDE, LONGITUDE, FOTO};
@@ -71,4 +65,11 @@ public class Mercado {
         this.longitude = longitude;
     }
 
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 }

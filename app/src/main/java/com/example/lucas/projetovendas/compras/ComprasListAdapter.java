@@ -21,11 +21,9 @@ import java.util.List;
 
 public class ComprasListAdapter extends ArrayAdapter<Compras> {
 
-
-
-    int layout;
-    Context context;
-    List<Compras> comprasList;
+    private int layout;
+    private Context context;
+    private List<Compras> comprasList;
 
     public ComprasListAdapter(Context context, int layout, List<Compras> compraList) {
         super(context, layout, compraList);
@@ -50,9 +48,9 @@ public class ComprasListAdapter extends ArrayAdapter<Compras> {
         tvQuantidade.setText(compras.getQuantidade().toString());
 
 
-        if (compras.getFoto() != null){
-            byte [] bytearray = Base64.decode(compras.getFoto(), Base64.DEFAULT);
-            Bitmap bmimage = BitmapFactory.decodeByteArray(bytearray, 0,bytearray.length);
+        if (compras.getFoto() != null) {
+            byte[] bytearray = Base64.decode(compras.getFoto(), Base64.DEFAULT);
+            Bitmap bmimage = BitmapFactory.decodeByteArray(bytearray, 0, bytearray.length);
             imgDenuncia.setImageBitmap(bmimage);
         }
 

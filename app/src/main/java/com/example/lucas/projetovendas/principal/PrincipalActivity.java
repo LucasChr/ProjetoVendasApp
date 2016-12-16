@@ -1,11 +1,13 @@
 package com.example.lucas.projetovendas.principal;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,14 +18,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.lucas.projetovendas.Lista.ListaComprasListFragment;
+import com.example.lucas.projetovendas.lista.ListaCadActivity;
+import com.example.lucas.projetovendas.lista.ListaComprasListFragment;
 import com.example.lucas.projetovendas.R;
 import com.example.lucas.projetovendas.compras.ComprasCadActivity;
 import com.example.lucas.projetovendas.compras.ComprasDAO;
-import com.example.lucas.projetovendas.compras.ComprasListFragment;
 import com.example.lucas.projetovendas.mercado.MercadoCadActivity;
 import com.example.lucas.projetovendas.mercado.MercadoListFragment;
-import com.example.lucas.projetovendas.mercado.MercadoMapFragment;
+import com.example.lucas.projetovendas.mercado.MercadoMapActivity;
 import com.example.lucas.projetovendas.sobre.SobreFragment;
 
 public class PrincipalActivity extends AppCompatActivity
@@ -31,7 +33,7 @@ public class PrincipalActivity extends AppCompatActivity
 
     private ComprasDAO comprasDAO;
     private boolean isFABOpen;
-    FloatingActionButton fab, fab1, fab2, fab3, fab4;
+    FloatingActionButton fab, fab1, fab2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,6 @@ public class PrincipalActivity extends AppCompatActivity
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab1 = (FloatingActionButton) findViewById(R.id.fab1);
         fab2 = (FloatingActionButton) findViewById(R.id.fab2);
-        fab3 = (FloatingActionButton) findViewById(R.id.fab3);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,16 +70,8 @@ public class PrincipalActivity extends AppCompatActivity
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent it = new Intent(PrincipalActivity.this, ListaComprasListFragment.class);
-                //startActivityForResult(it, 2);
-            }
-        });
-
-        fab3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent it = new Intent(PrincipalActivity.this, ComprasCadActivity.class);
-                startActivityForResult(it, 3);
+                Intent it = new Intent(PrincipalActivity.this, ListaCadActivity.class);
+                startActivityForResult(it, 2);
             }
         });
 
@@ -116,17 +109,13 @@ public class PrincipalActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_mercado) {
             Intent it = new Intent(PrincipalActivity.this, MercadoCadActivity.class);
             startActivityForResult(it, 1);
-        }else if (id == R.id.action_lista){
-            Intent it = new Intent(PrincipalActivity.this, ComprasCadActivity.class);
+        } else if (id == R.id.action_lista) {
+            Intent it = new Intent(PrincipalActivity.this, ListaCadActivity.class);
             startActivityForResult(it, 1);
         }
 
@@ -143,10 +132,11 @@ public class PrincipalActivity extends AppCompatActivity
 
     public void setDisplay(int pos) {
         Fragment fragment;
+        Activity activity;
 
         switch (pos) {
             case R.id.nav_compras: {
-                fragment = new ComprasListFragment();
+                fragment = new ListaComprasListFragment();
                 abrirFragment(fragment, "Compras");
                 break;
             }
@@ -156,8 +146,8 @@ public class PrincipalActivity extends AppCompatActivity
                 break;
             }
             case R.id.nav_mapa: {
-                fragment = new MercadoMapFragment();
-                abrirFragment(fragment, "Mapa de mercados");
+                Intent it = new Intent(PrincipalActivity.this, MercadoMapActivity.class);
+                startActivityForResult(it, 2);
                 break;
             }
             case R.id.nav_sobre: {
@@ -188,7 +178,6 @@ public class PrincipalActivity extends AppCompatActivity
         isFABOpen = true;
         fab1.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
         fab2.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
-        fab3.animate().translationY(-getResources().getDimension(R.dimen.standard_155));
     }
 
 
@@ -196,7 +185,6 @@ public class PrincipalActivity extends AppCompatActivity
         isFABOpen = false;
         fab1.animate().translationY(0);
         fab2.animate().translationY(0);
-        fab3.animate().translationY(0);
     }
 
 }

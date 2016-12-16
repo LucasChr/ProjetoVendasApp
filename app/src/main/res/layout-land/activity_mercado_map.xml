@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="4dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="450dp"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/fragment_mercado_mapa_edtPesquisa"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/edt_pesquisa" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:text="@string/btn_buscar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fragment_mercado_mapa_btnBuscar"
+            android:layout_weight="1"
+            android:onClick="buscarMercado"/>
+
+    </LinearLayout>
+
+    <include layout="@layout/fragment_mapa"/>
+
+</LinearLayout>

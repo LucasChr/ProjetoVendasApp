@@ -6,7 +6,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-
+    <dimen name="fab_outros">18dp</dimen>
     <dimen name="standard_205">205dp</dimen>
     <dimen name="standard_155">155dp</dimen>
     <dimen name="standard_105">105dp</dimen>
@@ -14,5 +14,9 @@
 
     <dimen name="standard_21">21dp</dimen>
     <dimen name="standard_45">45dp</dimen>
+    <dimen name="espaco_nome">3dp</dimen>
+    <dimen name="width_imgLista">60dp</dimen>
+    <dimen name="height_imgLista">40dp</dimen>
+    <dimen name="paddingLeft_itensLista">60dp</dimen>
 
 </resources>

@@ -11,8 +11,8 @@ import android.os.IBinder;
 
 public class GpsService extends Service implements LocationListener {
 
-    Context context;
-    Location location;
+    private Context context;
+    private Location location;
 
     public GpsService(Context context) {
         this.context = context;

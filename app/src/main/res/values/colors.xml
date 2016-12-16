@@ -8,4 +8,9 @@
     <color name="secondary_text">#757575</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
+    <color name="fab">#FFFFFF</color>
+    <color name="lista_compras">#757575</color>
+    <color name="fundo_lista_compras">#CAE1FF</color>
+    <color name="list_item_texto">#68838B</color>
+    <color name="card_list_item">#E0EEEE</color>
 </resources>
