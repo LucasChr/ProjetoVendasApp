@@ -1,6 +1,7 @@
 package com.example.lucas.projetovendas.mercado;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -68,20 +69,12 @@ public class MercadoMapActivity extends AppCompatActivity implements OnMapReadyC
     }
 
     public void buscarMercado(View v) {
-        Mercado mercado = dao.buscarNome(edtBusca.getText().toString());
-
-        if (!mercadoList.isEmpty()) {
-            if (mercadoList.contains(mercado.getId())) {
-                LatLng latLng = new LatLng(Double.valueOf(mercado.getLatitude()), Double.valueOf(mercado.getLongitude()));
-
-                MarkerOptions markerOptions = new MarkerOptions();
-                markerOptions.title(mercado.getNome_mercado());
-                markerOptions.snippet(mercado.getTelefone());
-                markerOptions.position(latLng);
-                CameraUpdateFactory.newLatLng(latLng);
-            }
-        }
-
+        Intent intent = new Intent(this, MercadoMapa.class);
+        String txt = edtBusca.getText().toString();
+        Bundle bundle = new Bundle();
+        bundle.putString("txt", txt);
+        intent.putExtras(bundle);
+        startActivityForResult(intent, 1);
     }
 
     @Override

@@ -46,6 +46,7 @@
         <activity android:name=".lista.ListaCadActivity" />
         <activity android:name=".compras.ComprasActivity" />
         <activity android:name=".compras.ComprasListActivity" />
+        <activity android:name=".mercado.MercadoMapa"></activity>
     </application>
 
 </manifest>

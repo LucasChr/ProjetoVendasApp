@@ -38,6 +38,7 @@ public class ComprasCadActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         String txt = bundle.getString("txt");
         srtLista = txt;
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         edtProduto = (EditText) findViewById(R.id.compra_cad_edtProduto);

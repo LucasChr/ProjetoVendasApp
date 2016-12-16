@@ -7,7 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 /**
  * Created by lucas on 04/11/16.
  */
-public class SQLiteHelper extends SQLiteOpenHelper {
+public class
+SQLiteHelper extends SQLiteOpenHelper {
 
     private String[] scriptSQLCreate;
     private String[] scriptSQLDelete;

@@ -17,84 +17,93 @@
         app:cardCornerRadius="5dp">
 
         <LinearLayout
-            android:layout_width="@dimen/width_imgLista"
-            android:layout_height="@dimen/height_imgLista">
-
-            <ImageView
-                android:id="@+id/fragment_compra_list_item_imgProduto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/shopping_cart_blue" />
-        </LinearLayout>
-
-        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/paddingLeft_itensLista">
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_width="@dimen/width_imgLista"
+                android:layout_height="@dimen/height_imgLista">
 
-                <TextView
+                <ImageView
+                    android:id="@+id/fragment_compra_list_item_imgProduto"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="3dp"
-                    android:text="@string/text_produto"
-                    android:textColor="@color/list_item_texto" />
-
-                <TextView
-                    android:id="@+id/fragment_compra_list_item_tvProduto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/text_produto"
-                    android:textColor="@color/list_item_texto" />
-
+                    android:layout_height="match_parent"
+                    android:src="@drawable/shopping_cart_blue" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingRight="3dp"
-                    android:text="@string/text_preco"
-                    android:textColor="@color/list_item_texto" />
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/fragment_compra_list_item_tvPreco"
-                    android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="3dp"
+                        android:text="@string/text_produto"
+                        android:textColor="@color/list_item_texto" />
+
+                    <TextView
+                        android:id="@+id/fragment_compra_list_item_tvProduto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_produto"
+                        android:textColor="@color/list_item_texto" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/text_preco"
-                    android:textColor="@color/list_item_texto" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="3dp"
+                        android:text="@string/text_preco"
+                        android:textColor="@color/list_item_texto" />
+
+                    <TextView
+                        android:id="@+id/fragment_compra_list_item_tvPreco"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_preco"
+                        android:textColor="@color/list_item_texto" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="3dp"
+                        android:text="@string/text_quantidade"
+                        android:textColor="@color/list_item_texto" />
+
+                    <TextView
+                        android:id="@+id/fragment_compra_list_item_tvQuantidade"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_quantidade"
+                        android:textColor="@color/list_item_texto" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="3dp"
-                    android:text="@string/text_quantidade"
-                    android:textColor="@color/list_item_texto" />
-
-                <TextView
-                    android:id="@+id/fragment_compra_list_item_tvQuantidade"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/text_quantidade"
-                    android:textColor="@color/list_item_texto" />
-
-            </LinearLayout>
         </LinearLayout>
 
 

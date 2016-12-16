@@ -100,22 +100,17 @@ public class ComprasListActivity extends AppCompatActivity implements AdapterVie
                 finish();
                 break;
             case R.id.action_compra:
-                Intent it = new Intent(ComprasListActivity.this, ComprasCadActivity.class);
+                Intent it = new Intent(this, ComprasCadActivity.class);
                 String nome = String.valueOf(lista.getNome());
                 Bundle bundle = new Bundle();
                 bundle.putString("txt", nome);
                 it.putExtras(bundle);
                 startActivityForResult(it, 1);
                 break;
-            case R.id.action_editar:
-                Intent it1 = new Intent(this, ListaCadActivity.class);
-                String id = String.valueOf(lista.getId());
-                Bundle bundle1 = new Bundle();
-                bundle1.putString("txt", id);
-                it1.putExtras(bundle1);
-                startActivityForResult(it1, 2);
+            case R.id.action_excluir:
+                listaDAO.excluir(lista.getId().toString());
+                finish();
                 break;
-
 
         }
         return true;
@@ -145,7 +140,7 @@ public class ComprasListActivity extends AppCompatActivity implements AdapterVie
     }
 
     public void atualizaLista() {
-        List<Compras> tu = comprasDAO.listar();
+        List<Compras> tu = comprasDAO.listarPorLista(lista.getNome());
         adapter.clear();
         adapter.addAll(tu);
         adapter.notifyDataSetChanged();

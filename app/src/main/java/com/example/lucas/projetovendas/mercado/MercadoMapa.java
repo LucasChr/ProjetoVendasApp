@@ -6,9 +6,8 @@ import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,10 +19,11 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MercadoActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MercadoMapa extends AppCompatActivity implements OnMapReadyCallback {
 
+    private String srtBusca;
+    private TextView tvMercado, tvTelefone;
     private MercadoDAO mercadoDAO;
-    private TextView tvNome, tvTelefone;
     private ImageView imgMercado;
     private Bitmap ivFoto;
     private Mercado mercado;
@@ -31,23 +31,29 @@ public class MercadoActivity extends AppCompatActivity implements OnMapReadyCall
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mercado);
+        setContentView(R.layout.activity_mercado_mapa);
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        String txt = bundle.getString("txt");
+        srtBusca = txt;
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mercadoDAO = new MercadoDAO(this);
         Intent it = getIntent();
 
+        //fazer buscar no banco
         if (it != null) {
             mercado = new Mercado();
-            mercado = mercadoDAO.buscar(it.getStringExtra(Mercado.ID));
+            mercado = mercadoDAO.buscarNome(srtBusca);
         }
 
-        tvNome = (TextView) findViewById(R.id.activity_mercado_tvMercadoNome);
-        tvTelefone = (TextView) findViewById(R.id.activity_mercado_tvTelefone);
-        imgMercado = (ImageView) findViewById(R.id.activity_mercado_imgMercado);
+        tvMercado = (TextView) findViewById(R.id.activity_mercado_mapa_tvMercado);
+        tvTelefone = (TextView) findViewById(R.id.activity_mercado_mapa_tvTelefone);
+        imgMercado = (ImageView) findViewById(R.id.activity_mercado_mapa_imgMercado);
 
-        tvNome.setText(mercado.getNome_mercado());
+        tvMercado.setText(mercado.getNome_mercado());
         tvTelefone.setText(mercado.getTelefone());
 
         byte[] bytearray = Base64.decode(mercado.getFoto(), Base64.DEFAULT);
@@ -57,33 +63,8 @@ public class MercadoActivity extends AppCompatActivity implements OnMapReadyCall
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.mercado, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                break;
-            case R.id.action_mercado:
-                Intent it = new Intent(this, MercadoCadActivity.class);
-                startActivityForResult(it, 1);
-                break;
-            case R.id.action_excluir:
-                mercadoDAO.excluir(mercado.getId().toString());
-                finish();
-                break;
-
-        }
-        return true;
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -103,20 +84,15 @@ public class MercadoActivity extends AppCompatActivity implements OnMapReadyCall
         googleMap.setMyLocationEnabled(true);
     }
 
-
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("Nome", tvNome.getText().toString());
-        outState.putString("Telefone", tvTelefone.getText().toString());
-        Log.i("bundle", "save");
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return true;
     }
 
-    @Override
-    protected void onRestoreInstanceState(Bundle bundle) {
-        super.onRestoreInstanceState(bundle);
-        tvNome.setText(bundle.getString("Nome"));
-        tvTelefone.setText(bundle.getString("Telefone"));
-        Log.i("bundle", "restore");
-    }
 }
